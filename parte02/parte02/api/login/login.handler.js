@@ -1,10 +1,9 @@
 let { listaUsuarios } = require("../cadastrarUsuario/cadastrarUsuario.handler");
 
 async function login(usuario) {
-    for (let usuarioFor of listaUsuarios) {
-        if (usuario.usuario != usuarioFor.usuario && usuario.senha != usuarioFor.senha) {
-            return "Login inválido!"
-        }
+    
+    if(!listaUsuarios.find(user => user.usuario == usuario.usuario && user.senha == usuario.senha)){
+        return "Usuário ou senha incorretos";
     }
 
     return "Login válido!";
